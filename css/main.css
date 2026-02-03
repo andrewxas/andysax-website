@@ -13,7 +13,7 @@
 body {
   font-family: "Manrope", "Raleway", sans-serif;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 19px;
   min-width: 320px;
   position: relative;
   line-height: 1.7;
@@ -31,7 +31,7 @@ h4 {
 }
 
 p {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.75;
 }
 
@@ -60,9 +60,9 @@ section h3,
 
 section {
   padding: 70px 0 90px; }
-  section h2 {
+section h2 {
     text-align: center;
-    font-size: 32px;
+    font-size: 36px;
     text-transform: none;
     margin: 0 0 15px;
     letter-spacing: 0.5px; }
@@ -77,7 +77,7 @@ section {
   .s_descr_wrap .s_descr {
     display: inline-block;
     text-transform: none;
-    font-size: 14px;
+    font-size: 15px;
     position: relative;
     margin-bottom: 130px;
     font-weight: 600; }
