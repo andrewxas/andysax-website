@@ -297,20 +297,16 @@ svg path {
     -webkit-transition: all 1s ease;
     transition: all 1s ease; }
     .top_wrapper .top_text::before {
-      content: none;
+      content: "";
+      position: absolute;
+      width: 100vw;
+      height: 220px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.38) 20%, rgba(0, 0, 0, 0.42) 50%, rgba(0, 0, 0, 0.38) 80%, rgba(0, 0, 0, 0) 100%);
+      z-index: -1;
     }
-
-.top_wrapper::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  height: 220px;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.38) 20%, rgba(0, 0, 0, 0.42) 50%, rgba(0, 0, 0, 0.38) 80%, rgba(0, 0, 0, 0) 100%);
-  z-index: 0;
-}
 
 .top_wrapper .top_descr,
 .top_wrapper .top_text {
@@ -367,6 +363,8 @@ svg path {
   border-color: var(--c-accent);
   box-shadow: 0 8px 20px rgba(20, 19, 18, 0.25);
   margin-top: 6px;
+  opacity: 0;
+  animation: fadeInUp 0.9s ease 0.9s forwards;
 }
 .cta_btn:hover {
   background-color: var(--c-accent-2);
