@@ -93,6 +93,10 @@ $(document).ready(function() {
 		$(this).find(".podrt_descr").attr("id", "work_" + i);
 	});
 
+	$(".portfolio_item img").on("click", function() {
+		$(this).closest(".portfolio_item").find(".popup_content").trigger("click");
+	});
+
 	$("input, select, textarea").jqBootstrapValidation();
 
 	$(".top_mnu ul a, .cta_btn").mPageScroll2id();
