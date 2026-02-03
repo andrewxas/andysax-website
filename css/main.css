@@ -297,13 +297,26 @@ svg path {
     -webkit-transition: all 1s ease;
     transition: all 1s ease; }
     .top_wrapper .top_text::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.35);
-      border-radius: 12px;
-      z-index: -1;
+      content: none;
     }
+
+.top_wrapper::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 220px;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.38) 20%, rgba(0, 0, 0, 0.42) 50%, rgba(0, 0, 0, 0.38) 80%, rgba(0, 0, 0, 0) 100%);
+  z-index: 0;
+}
+
+.top_wrapper .top_descr,
+.top_wrapper .top_text {
+  position: relative;
+  z-index: 1;
+}
     .top_wrapper .top_text p {
       margin: 0;
       text-transform: none;
