@@ -111,7 +111,7 @@ $(document).ready(function() {
 
 		function applyClasses() {
 			items.forEach(function(el, i) {
-				el.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden");
+				el.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre-top", "is-pre-bottom");
 				const rel = (i - startIndex + items.length) % items.length;
 				if (rel === 0) el.classList.add("is-top");
 				else if (rel === 1) el.classList.add("is-mid");
@@ -125,13 +125,22 @@ $(document).ready(function() {
 		function rotate(direction) {
 			if (locked) return;
 			locked = true;
-			startIndex = direction === "down"
+			const nextIndex = direction === "down"
 				? (startIndex + 1) % items.length
 				: (startIndex - 1 + items.length) % items.length;
+
+			const incoming = items[nextIndex];
+			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden");
+			incoming.classList.add(direction === "down" ? "is-pre-top" : "is-pre-bottom");
+
+			// Force reflow so the pre-position applies before transition.
+			incoming.offsetHeight;
+
+			startIndex = nextIndex;
 			applyClasses();
 			setTimeout(function() {
 				locked = false;
-			}, 850);
+			}, 1150);
 		}
 
 		stackEl.addEventListener("wheel", function(e) {
