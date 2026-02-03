@@ -441,36 +441,64 @@ svg path {
   text-align: center; }
 .s_portfolio li {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 8px 10px;
   text-transform: uppercase;
   font-size: 12px;
   cursor: pointer;
   line-height: 2; }
 .s_portfolio ul {
-  margin-bottom: 50px; }
+  margin-bottom: 40px; }
+
+.s_portfolio .filter_div {
+  text-align: center;
+}
+.s_portfolio .filter {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 2px;
+  background: rgba(255, 255, 255, 0.04);
+  transition: all 0.25s ease;
+}
+.s_portfolio .filter:hover {
+  border-color: rgba(255, 255, 255, 0.6);
+  color: #ffffff;
+}
+.s_portfolio .filter.active {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  border-color: var(--c-accent);
+}
 
 .portfolio_item {
   display: none;
-  padding: 0; }
+  padding: 0;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px; }
   .portfolio_item img {
     object-fit: cover;
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 220px;
     cursor: pointer;
+    display: block;
   }
   .portfolio_item img.portrait-fit {
     object-fit: cover;
     object-position: top center;
-    width: 300px;
-    height: 200px;
+    width: 100%;
+    height: 220px;
   }
   .portfolio_item .port_item_cont {
     position: absolute;
     top: 0;
     left: 0;
-    width: 300px;
+    width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
+    background: linear-gradient(180deg, rgba(20, 19, 18, 0.1) 0%, rgba(20, 19, 18, 0.85) 100%);
     text-align: center;
     padding-top: 15%;
     opacity: 0;
@@ -481,7 +509,7 @@ svg path {
   }
   .portfolio_item:hover .port_item_cont {
     opacity: 1;
-    padding-top: 30%;
+    padding-top: 32%;
     pointer-events: auto;
     cursor: pointer;
   }
@@ -489,10 +517,14 @@ svg path {
     color: #fff;
     margin-bottom: 0; }
   .portfolio_item a {
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.1);
     border: #fff 1px solid;
-    padding: 2px 10px;
-    display: inline-block; }
+    padding: 6px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 12px;
+    letter-spacing: 1px; }
 
 .podrt_descr {
   display: block;

@@ -29,6 +29,10 @@
   margin-top: 60%;  
   text-align: center;
   position: relative;}
+	.portfolio_item img,
+	.portfolio_item img.portrait-fit {
+		height: 190px;
+	}
 }
 
 /* Extra Small Devices, Phones */
@@ -61,12 +65,16 @@
 	.logo_container {
   text-align: center; }
 
-.logo {
+	.logo {
   height: 100px;
   z-index: 1;
   margin-top: 99%;  
   text-align: center;
   position: relative;}
+	.portfolio_item img,
+	.portfolio_item img.portrait-fit {
+		height: 170px;
+	}
 }
 
 /* Custom, iPhone Retina */

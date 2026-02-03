@@ -66,11 +66,11 @@ section h3 {
   letter-spacing: 0.5px; }
 
 .s_portfolio li {
-  color: var(--c-muted);
+  color: rgba(255, 255, 255, 0.85);
   letter-spacing: 1px; }
 .s_portfolio li.active {
   color: var(--c-dark);
-  border-bottom: 1px solid var(--c-accent-2); }
+  border-bottom: none; }
 
 .portfolio_item .port_item_cont a {
   border-color: var(--c-accent);
