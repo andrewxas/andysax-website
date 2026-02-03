@@ -140,7 +140,7 @@ $(document).ready(function() {
 			applyClasses();
 			setTimeout(function() {
 				locked = false;
-			}, 1150);
+			}, 1200);
 		}
 
 		stackEl.addEventListener("wheel", function(e) {
