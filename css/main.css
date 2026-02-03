@@ -36,10 +36,13 @@ p {
 }
 
 .s_about p,
-.s_resume p,
-.s_testimonials p,
-.s_contacts p {
-  font-size: 1.2rem;
+.s_resume p {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+.resume_container .resume_item p {
+  font-size: 1.25rem;
   line-height: 1.8;
 }
 
