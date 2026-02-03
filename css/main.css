@@ -621,6 +621,28 @@ svg path {
   opacity: 1;
 }
 
+.mfp-content {
+  max-width: 1100px;
+}
+
+.mfp-figure,
+.mfp-inline-holder .mfp-content,
+.mfp-image-holder .mfp-content {
+  position: relative;
+}
+
+.mfp-img {
+  max-width: 90vw;
+  max-height: 80vh;
+  width: auto;
+  height: auto;
+}
+
+.mfp-figure:after {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+  background: transparent;
+}
+
 .contact_box {
   margin-bottom: 30px; }
   .contact_box h3 {
