@@ -35,6 +35,14 @@ p {
   line-height: 1.75;
 }
 
+.s_about p,
+.s_resume p,
+.s_testimonials p,
+.s_contacts p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
 body input:focus:required:invalid,
 body textarea:focus:required:invalid {
   color: red; }
