@@ -373,7 +373,7 @@ svg path {
   color: var(--c-dark);
   border-color: var(--c-accent);
   box-shadow: 0 8px 20px rgba(20, 19, 18, 0.25);
-  margin-top: 6px;
+  margin-top: 28px;
   opacity: 0;
   animation: fadeInUp 0.9s ease 0.9s forwards;
 }
