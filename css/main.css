@@ -632,10 +632,12 @@ svg path {
 }
 
 .mfp-img {
-  max-width: 90vw;
-  max-height: 80vh;
+  max-width: 86vw;
+  max-height: 72vh;
   width: auto;
   height: auto;
+  display: block;
+  margin: 0 auto;
 }
 
 .mfp-figure:after {
