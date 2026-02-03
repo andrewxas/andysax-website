@@ -43,7 +43,8 @@ $(document).ready(function() {
 		fixedContentPos: false,
 		removalDelay: 300,
 		mainClass: "mfp-fade",
-		midClick: true
+		midClick: true,
+		closeOnContentClick: true
 	});
 
 	$(".section_header").animated("fadeInUp", "fadeOutDown");
