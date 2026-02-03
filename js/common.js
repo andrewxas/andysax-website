@@ -103,45 +103,42 @@ $(document).ready(function() {
 
 	const $testimonialStack = $(".testimonial_stack");
 	const $testimonials = $testimonialStack.find(".testimonial");
-	if ($testimonialStack.length && $testimonials.length > 1) {
-		let index = 0;
+	if ($testimonialStack.length && $testimonials.length > 2) {
+		const stackEl = $testimonialStack[0];
+		const items = Array.from($testimonials);
+		let startIndex = 0;
 		let locked = false;
 
-		$testimonials.removeClass("is-active is-exit-up is-exit-down");
-		$testimonials.eq(index).addClass("is-active");
+		function applyClasses() {
+			items.forEach(function(el, i) {
+				el.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden");
+				const rel = (i - startIndex + items.length) % items.length;
+				if (rel === 0) el.classList.add("is-top");
+				else if (rel === 1) el.classList.add("is-mid");
+				else if (rel === 2) el.classList.add("is-bottom");
+				else el.classList.add("is-hidden");
+			});
+		}
 
-		function showTestimonial(nextIndex, direction) {
-			if (locked || nextIndex === index) return;
+		applyClasses();
+
+		function rotate(direction) {
+			if (locked) return;
 			locked = true;
-
-			const $current = $testimonials.eq(index);
-			const $next = $testimonials.eq(nextIndex);
-
-			$current.removeClass("is-active").addClass(direction === "down" ? "is-exit-down" : "is-exit-up");
-			$next.removeClass("is-exit-up is-exit-down").addClass("is-active");
-
+			startIndex = direction === "down"
+				? (startIndex + 1) % items.length
+				: (startIndex - 1 + items.length) % items.length;
+			applyClasses();
 			setTimeout(function() {
-				$current.removeClass("is-exit-up is-exit-down");
-				index = nextIndex;
 				locked = false;
-			}, 600);
+			}, 850);
 		}
 
-		function inView() {
-			const rect = $testimonialStack[0].getBoundingClientRect();
-			return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
-		}
-
-		$testimonialStack.on("wheel", function(e) {
-			if (!inView() || locked) return;
+		stackEl.addEventListener("wheel", function(e) {
 			e.preventDefault();
-			const delta = e.originalEvent.deltaY;
-			const direction = delta > 0 ? "down" : "up";
-			const nextIndex = direction === "down"
-				? (index + 1) % $testimonials.length
-				: (index - 1 + $testimonials.length) % $testimonials.length;
-			showTestimonial(nextIndex, direction);
-		});
+			const delta = e.deltaY;
+			rotate(delta > 0 ? "down" : "up");
+		}, { passive: false });
 	}
 
 });
