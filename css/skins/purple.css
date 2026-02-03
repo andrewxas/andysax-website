@@ -1,102 +1,102 @@
 body {
-  color: #1a1a1a; }
+  color: var(--c-text); }
 
 a {
-  color: #3a3a3a; }
+  color: var(--c-accent-2); }
 
 p,
 body .main_footer,
 .s_about li {
-  color: #555555; }
+  color: var(--c-muted); }
 
 .color_element {
-  color: #3a3a3a; }
+  color: var(--c-accent-2); }
 
 .color_bg {
-  background-color: #3a3a3a; }
+  background-color: var(--c-accent-2); }
 
 .color_border {
-  border-color: #3a3a3a; }
+  border-color: var(--c-accent-2); }
 
 .bg_light {
-  background-color: #ffffff; }
+  background-color: var(--c-bg-alt); }
 
 .bg_dark {
-  background-color: #1a1a1a;
-  color: #dddddd; }
+  background-color: var(--c-dark);
+  color: #f0ebe3; }
   .bg_dark .s_descr::after {
-    background-color: #dddddd; }
+    background-color: #f0ebe3; }
   .bg_dark a {
-    color: #dddddd; }
+    color: #f0ebe3; }
 
 .top_mnu a:hover {
-  color: #3a3a3a; }
+  color: var(--c-accent); }
 .top_mnu a {
-  letter-spacing: 4px; }
+  letter-spacing: 3px; }
 
 .top_text p {
   color: #ffffff;
-  letter-spacing: 5px; }
+  letter-spacing: 3px; }
 
 .personal_header {
-  letter-spacing: 2px; }
+  letter-spacing: 1px; }
 
 .s_descr {
-  letter-spacing: 4px; }
+  letter-spacing: 2px; }
   .s_descr::after {
-    background-color: #1a1a1a; }
+    background-color: var(--c-line); }
 
 section h3 {
-  letter-spacing: 3px;
-  color: #555555; }
+  letter-spacing: 2px;
+  color: var(--c-muted); }
 
 .s_about p:nth-child(even) {
-  color: #3a3a3a; }
+  color: var(--c-text); }
 
 .resume_container h3 {
-  color: #1a1a1a;
-  letter-spacing: 1px;
+  color: var(--c-text);
+  letter-spacing: 0.5px;
   font-size: 16px;
   font-weight: 600; }
 
 .resume_item .year {
-  background-color: #3a3a3a;
-  color: #dddddd; }
+  background-color: var(--c-accent-2);
+  color: var(--c-white); }
 .resume_item .resume_description {
-  letter-spacing: 1px; }
+  letter-spacing: 0.5px; }
 
 .s_portfolio li {
-  color: #555555;
-  letter-spacing: 2px; }
+  color: var(--c-muted);
+  letter-spacing: 1px; }
 .s_portfolio li.active {
-  color: #dddddd;
-  border-bottom: 1px solid #3a3a3a; }
+  color: var(--c-dark);
+  border-bottom: 1px solid var(--c-accent-2); }
 
 .portfolio_item .port_item_cont a {
-  border-color: #3a3a3a;
-  color: #3a3a3a; }
+  border-color: var(--c-accent);
+  color: var(--c-accent); }
 
 .main_footer a {
-  color: #3a3a3a; }
+  color: var(--c-accent-2); }
 
 .contacts_icon {
-  color: #3a3a3a; }
+  color: var(--c-accent-2); }
 
 .text-danger {
-  color: #3a3a3a; }
+  color: var(--c-accent-2); }
 
 form input:focus,
 form textarea:focus {
-  border: 1px solid #3a3a3a; }
+  border: 1px solid var(--c-accent-2); }
 form input,
 form textarea {
-  letter-spacing: 2px; }
+  letter-spacing: 1px; }
 form button {
-  background-color: #3a3a3a;
-  letter-spacing: 2px; }
+  background-color: var(--c-accent-2);
+  letter-spacing: 1.5px; }
 form .form-group {
-  letter-spacing: 2px;
-  color: #555555; }
+  letter-spacing: 1px;
+  color: var(--c-muted); }
 
 .popup_content {
   letter-spacing: 1px; }

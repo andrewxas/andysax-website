@@ -1,11 +1,39 @@
+:root {
+  --c-bg: #f7f4ef;
+  --c-bg-alt: #ffffff;
+  --c-dark: #141312;
+  --c-text: #1f1b16;
+  --c-muted: #6f665c;
+  --c-accent: #c9a36a;
+  --c-accent-2: #a77a45;
+  --c-line: #e3dccf;
+  --c-white: #ffffff;
+}
+
 body {
-  font-family: "Raleway", sans-serif;
-  font-weight: normal;
-  font-size: 14px;
+  font-family: "Manrope", "Raleway", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
   min-width: 320px;
   position: relative;
-  line-height: 1.6;
+  line-height: 1.7;
+  color: var(--c-text);
+  background-color: var(--c-bg);
   -webkit-font-smoothing: antialised; }
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: "Unbounded", "Raleway", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 1.75;
+}
 
 body input:focus:required:invalid,
 body textarea:focus:required:invalid {
@@ -21,12 +49,12 @@ body textarea:required:valid {
 section,
 .main_head {
   position: relative; }
-  section h3,
+section h3,
   .main_head h3 {
     text-align: center;
     text-transform: uppercase;
     font-weight: 400;
-    font-size: 12px;
+    font-size: 13px;
     margin-top: 0;
     margin-bottom: 35px; }
 
@@ -34,12 +62,12 @@ section {
   padding: 70px 0 90px; }
   section h2 {
     text-align: center;
-    font-size: 24px;
-    text-transform: uppercase;
+    font-size: 32px;
+    text-transform: none;
     margin: 0 0 15px;
-    letter-spacing: 1px; }
+    letter-spacing: 0.5px; }
   section .personal_header {
-    font-size: 13px;
+    font-size: 14px;
     text-align: left;
     margin-bottom: 30px;
     color: #555; }
@@ -48,8 +76,8 @@ section {
   text-align: center; }
   .s_descr_wrap .s_descr {
     display: inline-block;
-    text-transform: uppercase;
-    font-size: 12px;
+    text-transform: none;
+    font-size: 14px;
     position: relative;
     margin-bottom: 130px;
     font-weight: 600; }
@@ -65,6 +93,18 @@ section {
 .main_head {
   min-height: 480px;
   padding-top: 20px; }
+.main_head::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(20, 19, 18, 0.7) 0%, rgba(20, 19, 18, 0.55) 45%, rgba(20, 19, 18, 0.8) 100%);
+  z-index: 0;
+}
+.main_head .container,
+.main_head .top_wrapper {
+  position: relative;
+  z-index: 1;
+}
 
 .loader {
   background: none repeat scroll 0 0 #ffffff;
@@ -250,31 +290,69 @@ svg path {
       display: table-cell;
       text-align: center;
       vertical-align: middle; }
-  .top_wrapper .top_text {
+.top_wrapper .top_text {
     display: inline-block;
     -webkit-transition: all 1s ease;
     transition: all 1s ease; }
     .top_wrapper .top_text p {
       margin: 0;
-      text-transform: uppercase;
+      text-transform: none;
       -webkit-animation-delay: 1s;
       animation-delay: 1s; }
     .top_wrapper .top_text h1 {
       display: inline-block;
       padding: 10px 35px;
       color: #fff;
-      border: 8px solid #fff;
+      border: 6px solid rgba(255, 255, 255, 0.65);
       text-transform: uppercase;
       font-weight: bold;
-      font-size: 2.8em;
-      background-color: rgba(0, 0, 0, 0.1);
+      font-size: 3.4em;
+      background-color: rgba(0, 0, 0, 0.18);
       margin-left: 20px;
       margin-right: 20px;
       -webkit-animation-delay: 0.5s;
       animation-delay: 0.5s; }
+.hero_kicker {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: rgba(255, 255, 255, 0.85);
+}
+.hero_subtitle {
+  font-size: 1.1rem;
+  letter-spacing: 1.2px;
+  margin-top: 8px;
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  font-size: 0.85rem;
+  border: 1px solid transparent;
+  transition: all 0.25s ease;
+}
+
+.cta_btn {
+  background-color: var(--c-accent);
+  color: var(--c-dark);
+  border-color: var(--c-accent);
+  box-shadow: 0 8px 20px rgba(20, 19, 18, 0.25);
+}
+.cta_btn:hover {
+  background-color: var(--c-accent-2);
+  border-color: var(--c-accent-2);
+  color: var(--c-white);
+  transform: translateY(-2px);
+}
 
 .toggle_mnu {
-  background-color: #000; }
+  background-color: var(--c-dark); }
 
 .main_footer {
   padding: 50px 0;
@@ -557,8 +635,8 @@ svg path {
 .testimonial {
   margin-bottom: 30px;
   padding: 20px;
-  background: #fff;
-  border-left: 4px solid #8e44ad;
+  background: var(--c-bg-alt);
+  border-left: 4px solid var(--c-accent);
   box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
@@ -571,7 +649,7 @@ svg path {
 .testimonial h4 {
   margin: 0;
   font-weight: 600;
-  color: #333;
+  color: var(--c-text);
 }
 
 
@@ -659,9 +737,9 @@ svg path {
 
 #cookie-banner button {
   padding: 6px 16px;
-  background-color: #a25cff;
+  background-color: var(--c-accent);
   border: none;
-  color: white;
+  color: var(--c-dark);
   font-size: 14px;
   cursor: pointer;
   border-radius: 4px;

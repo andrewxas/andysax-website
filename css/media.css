@@ -38,6 +38,14 @@
 		padding-left: 10px;
 		padding-right: 10px;
 	}
+	.hero_subtitle {
+		font-size: 0.95rem;
+		letter-spacing: 0.6px;
+	}
+	.cta_btn {
+		padding: 10px 22px;
+		font-size: 0.8rem;
+	}
 	.main_footer {
 		text-align: right;
 	
