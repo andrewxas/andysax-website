@@ -13,7 +13,7 @@
 body {
   font-family: "Manrope", "Raleway", sans-serif;
   font-weight: 400;
-  font-size: 17px;
+  font-size: 18px;
   min-width: 320px;
   position: relative;
   line-height: 1.7;
@@ -31,7 +31,7 @@ h4 {
 }
 
 p {
-  font-size: 1rem;
+  font-size: 1.05rem;
   line-height: 1.75;
 }
 
@@ -292,8 +292,18 @@ svg path {
       vertical-align: middle; }
 .top_wrapper .top_text {
     display: inline-block;
+    position: relative;
+    padding: 18px 28px 22px;
     -webkit-transition: all 1s ease;
     transition: all 1s ease; }
+    .top_wrapper .top_text::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.35);
+      border-radius: 12px;
+      z-index: -1;
+    }
     .top_wrapper .top_text p {
       margin: 0;
       text-transform: none;
@@ -319,10 +329,10 @@ svg path {
   color: rgba(255, 255, 255, 0.85);
 }
 .hero_subtitle {
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   letter-spacing: 1.2px;
   margin-top: 8px;
-  margin-bottom: 28px;
+  margin-bottom: 36px;
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -343,6 +353,7 @@ svg path {
   color: var(--c-dark);
   border-color: var(--c-accent);
   box-shadow: 0 8px 20px rgba(20, 19, 18, 0.25);
+  margin-top: 6px;
 }
 .cta_btn:hover {
   background-color: var(--c-accent-2);
