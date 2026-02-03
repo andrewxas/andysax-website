@@ -777,12 +777,24 @@ svg path {
   padding: 60px 0;
 }
 
+.testimonial_stack {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+
 .testimonial {
-  margin-bottom: 30px;
-  padding: 20px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  padding: 22px 24px;
   background: var(--c-bg-alt);
   border-left: 4px solid var(--c-accent);
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: transform 0.55s ease, opacity 0.55s ease;
 }
 
 .testimonial p {
@@ -797,34 +809,22 @@ svg path {
   color: var(--c-text);
 }
 
+.testimonial.is-active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  z-index: 2;
+}
 
-
-/* Анимация плавного появления отзывов */
-.s_testimonials .testimonial {
+.testimonial.is-exit-down {
   opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
+  transform: translateY(60px) scale(0.98);
+  z-index: 1;
 }
 
-.s_testimonials .testimonial:nth-child(1) {
-  animation-delay: 0.1s;
-}
-.s_testimonials .testimonial:nth-child(2) {
-  animation-delay: 0.3s;
-}
-.s_testimonials .testimonial:nth-child(3) {
-  animation-delay: 0.5s;
-}
-
-@keyframes fadeInUp {
-  0% {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.testimonial.is-exit-up {
+  opacity: 0;
+  transform: translateY(-60px) scale(0.98);
+  z-index: 1;
 }
 
 .col-md-pull-4.animation_2 p {

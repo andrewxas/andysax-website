@@ -101,6 +101,49 @@ $(document).ready(function() {
 
 	$(".top_mnu ul a, .cta_btn").mPageScroll2id();
 
+	const $testimonialStack = $(".testimonial_stack");
+	const $testimonials = $testimonialStack.find(".testimonial");
+	if ($testimonialStack.length && $testimonials.length > 1) {
+		let index = 0;
+		let locked = false;
+
+		$testimonials.removeClass("is-active is-exit-up is-exit-down");
+		$testimonials.eq(index).addClass("is-active");
+
+		function showTestimonial(nextIndex, direction) {
+			if (locked || nextIndex === index) return;
+			locked = true;
+
+			const $current = $testimonials.eq(index);
+			const $next = $testimonials.eq(nextIndex);
+
+			$current.removeClass("is-active").addClass(direction === "down" ? "is-exit-down" : "is-exit-up");
+			$next.removeClass("is-exit-up is-exit-down").addClass("is-active");
+
+			setTimeout(function() {
+				$current.removeClass("is-exit-up is-exit-down");
+				index = nextIndex;
+				locked = false;
+			}, 600);
+		}
+
+		function inView() {
+			const rect = $testimonialStack[0].getBoundingClientRect();
+			return rect.top < window.innerHeight * 0.7 && rect.bottom > window.innerHeight * 0.3;
+		}
+
+		$testimonialStack.on("wheel", function(e) {
+			if (!inView() || locked) return;
+			e.preventDefault();
+			const delta = e.originalEvent.deltaY;
+			const direction = delta > 0 ? "down" : "up";
+			const nextIndex = direction === "down"
+				? (index + 1) % $testimonials.length
+				: (index - 1 + $testimonials.length) % $testimonials.length;
+			showTestimonial(nextIndex, direction);
+		});
+	}
+
 });
 $(window).load(function() {
 
