@@ -742,6 +742,16 @@ svg path {
   max-width: 260px;
 }
 
+.contact_btn_compact {
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  max-width: 240px;
+}
+
+.about_contact_actions {
+  margin: 0 0 14px 0;
+}
+
 .contact_btn_icon {
   width: 42px;
   height: 42px;
