@@ -33,6 +33,15 @@
 	.portfolio_item img.portrait-fit {
 		height: 190px;
 	}
+	.testimonial_stack {
+		--ts-step: 240px;
+		--ts-hidden: 780px;
+		height: 780px;
+	}
+	.testimonial {
+		max-width: 92%;
+		min-height: 200px;
+	}
 }
 
 /* Extra Small Devices, Phones */
@@ -74,6 +83,16 @@
 	.portfolio_item img,
 	.portfolio_item img.portrait-fit {
 		height: 170px;
+	}
+	.testimonial_stack {
+		--ts-step: 210px;
+		--ts-hidden: 700px;
+		height: 700px;
+	}
+	.testimonial {
+		max-width: 94%;
+		min-height: 190px;
+		padding: 18px 18px;
 	}
 }
 

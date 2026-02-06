@@ -108,6 +108,8 @@ $(document).ready(function() {
 		const items = Array.from($testimonials);
 		let startIndex = 0;
 		let locked = false;
+		let touchStartY = 0;
+		let touchEndY = 0;
 
 		function applyClasses() {
 			items.forEach(function(el, i) {
@@ -148,6 +150,22 @@ $(document).ready(function() {
 			const delta = e.deltaY;
 			rotate(delta > 0 ? "down" : "up");
 		}, { passive: false });
+
+		stackEl.addEventListener("touchstart", function(e) {
+			if (!e.touches || e.touches.length === 0) return;
+			touchStartY = e.touches[0].clientY;
+		}, { passive: true });
+
+		stackEl.addEventListener("touchmove", function(e) {
+			if (!e.touches || e.touches.length === 0) return;
+			touchEndY = e.touches[0].clientY;
+		}, { passive: true });
+
+		stackEl.addEventListener("touchend", function() {
+			const delta = touchStartY - touchEndY;
+			if (Math.abs(delta) < 30) return;
+			rotate(delta > 0 ? "down" : "up");
+		});
 	}
 
 });
