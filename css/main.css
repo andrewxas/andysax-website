@@ -738,7 +738,7 @@ svg path {
   background: rgba(201, 163, 106, 0.12);
   color: var(--c-text);
   transition: all 0.25s ease;
-  max-width: 260px;
+  max-width: 130px;
 }
 
 .contact_btn_icon {
