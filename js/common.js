@@ -115,7 +115,7 @@ $(document).ready(function() {
 			"t-hidden",
 			"no-transition"
 		];
-		let startIndex = 0;
+		let stackIdx = [0, 1, 2]; // [top, mid, bottom]
 		let locked = false;
 		let touchStartY = 0;
 		let touchEndY = 0;
@@ -131,12 +131,9 @@ $(document).ready(function() {
 
 		function showInitial() {
 			items.forEach(hide);
-			const top = items[startIndex];
-			const mid = items[(startIndex + 1) % items.length];
-			const bottom = items[(startIndex + 2) % items.length];
-			setPos(top, "t-pos-top");
-			setPos(mid, "t-pos-mid");
-			setPos(bottom, "t-pos-bottom");
+			setPos(items[stackIdx[0]], "t-pos-top");
+			setPos(items[stackIdx[1]], "t-pos-mid");
+			setPos(items[stackIdx[2]], "t-pos-bottom");
 		}
 
 		showInitial();
@@ -145,15 +142,15 @@ $(document).ready(function() {
 			if (locked) return;
 			locked = true;
 
-			const topIdx = startIndex;
-			const midIdx = (startIndex + 1) % items.length;
-			const bottomIdx = (startIndex + 2) % items.length;
+			const topIdx = stackIdx[0];
+			const midIdx = stackIdx[1];
+			const bottomIdx = stackIdx[2];
 
 			let incomingIdx;
 			if (direction === "down") {
-				incomingIdx = (startIndex - 1 + items.length) % items.length;
+				incomingIdx = (topIdx - 1 + items.length) % items.length;
 			} else {
-				incomingIdx = (startIndex + 3) % items.length;
+				incomingIdx = (bottomIdx + 1) % items.length;
 			}
 
 			const top = items[topIdx];
@@ -161,7 +158,7 @@ $(document).ready(function() {
 			const bottom = items[bottomIdx];
 			const incoming = items[incomingIdx];
 
-			// Hide everything except current three + incoming.
+			// Hide all except current three + incoming.
 			items.forEach(function(el) {
 				if (el !== top && el !== mid && el !== bottom && el !== incoming) hide(el);
 			});
@@ -186,11 +183,13 @@ $(document).ready(function() {
 			});
 
 			setTimeout(function() {
-				if (direction === "down") hide(bottom);
-				else hide(top);
-				startIndex = direction === "down"
-					? incomingIdx
-					: (startIndex + 1) % items.length;
+				if (direction === "down") {
+					hide(bottom);
+					stackIdx = [incomingIdx, topIdx, midIdx];
+				} else {
+					hide(top);
+					stackIdx = [midIdx, bottomIdx, incomingIdx];
+				}
 				locked = false;
 			}, 1100);
 		}
