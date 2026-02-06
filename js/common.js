@@ -113,7 +113,7 @@ $(document).ready(function() {
 
 		function applyClasses() {
 			items.forEach(function(el, i) {
-				el.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre-top", "is-pre-bottom");
+				el.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre");
 				const rel = (i - startIndex + items.length) % items.length;
 				if (rel === 0) el.classList.add("is-top");
 				else if (rel === 1) el.classList.add("is-mid");
@@ -133,8 +133,9 @@ $(document).ready(function() {
 
 			const incoming = items[nextIndex];
 			incoming.classList.add("no-transition");
-			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre-top", "is-pre-bottom");
-			incoming.classList.add(direction === "down" ? "is-pre-top" : "is-pre-bottom");
+			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre");
+			incoming.classList.add("is-pre");
+			stackEl.dataset.dir = direction;
 
 			// Force reflow so the pre-position applies before transition.
 			incoming.offsetHeight;

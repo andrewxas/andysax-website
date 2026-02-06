@@ -929,13 +929,23 @@ svg path {
   z-index: 0;
 }
 
-.testimonial.is-pre-top {
+.testimonial.is-pre {
   opacity: 0;
+}
+
+.testimonial_stack[data-dir="down"] .testimonial.is-hidden {
+  transform: translateY(var(--ts-hidden));
+}
+
+.testimonial_stack[data-dir="down"] .testimonial.is-pre {
   transform: translateY(calc(var(--ts-step) * -1));
 }
 
-.testimonial.is-pre-bottom {
-  opacity: 0;
+.testimonial_stack[data-dir="up"] .testimonial.is-hidden {
+  transform: translateY(calc(var(--ts-hidden) * -1));
+}
+
+.testimonial_stack[data-dir="up"] .testimonial.is-pre {
   transform: translateY(var(--ts-hidden));
 }
 
