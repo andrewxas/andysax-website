@@ -717,6 +717,41 @@ svg path {
   .contact_box p {
     margin-top: 5px; }
 
+.contact_actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 10px;
+}
+
+.contact_btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 28px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  border: 1px solid var(--c-accent);
+  background: transparent;
+  color: var(--c-text);
+  transition: all 0.25s ease;
+}
+
+.contact_btn_icon {
+  font-size: 18px;
+  color: var(--c-accent-2);
+}
+
+.contact_btn_whatsapp:hover,
+.contact_btn_email:hover {
+  background: var(--c-accent);
+  color: var(--c-dark);
+  transform: translateY(-2px);
+}
+
 .main_form button {
   border: none;
   color: #fff;
