@@ -485,6 +485,16 @@ svg path {
   gap: 12px;
 }
 
+.price_anchor {
+  color: inherit;
+  text-decoration: none;
+}
+
+.price_anchor:hover {
+  color: var(--c-accent-2);
+  text-decoration: underline;
+}
+
 .resume_icon {
   font-size: 40px;
   margin-bottom: 35px; }
