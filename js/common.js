@@ -111,15 +111,28 @@ $(document).ready(function() {
 		let touchStartY = 0;
 		let touchEndY = 0;
 
-		function applyClasses() {
+		function applyClasses(incomingEl) {
 			items.forEach(function(el, i) {
-				el.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre");
+				el.classList.remove("is-top", "is-mid", "is-bottom");
+				if (el !== incomingEl) el.classList.remove("is-pre");
+				el.classList.add("is-hidden", "no-transition");
+
 				const rel = (i - startIndex + items.length) % items.length;
 				if (rel === 0) el.classList.add("is-top");
 				else if (rel === 1) el.classList.add("is-mid");
 				else if (rel === 2) el.classList.add("is-bottom");
-				else el.classList.add("is-hidden");
 			});
+
+			items.forEach(function(el) {
+				if (el.classList.contains("is-top") || el.classList.contains("is-mid") || el.classList.contains("is-bottom")) {
+					el.classList.remove("is-hidden", "no-transition");
+				}
+			});
+
+			if (incomingEl) {
+				incomingEl.classList.remove("is-hidden", "no-transition");
+				incomingEl.classList.add("is-pre");
+			}
 		}
 
 		applyClasses();
@@ -132,17 +145,17 @@ $(document).ready(function() {
 				: (startIndex - 1 + items.length) % items.length;
 
 			const incoming = items[nextIndex];
+			stackEl.dataset.dir = direction;
+
 			incoming.classList.add("no-transition");
 			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre");
 			incoming.classList.add("is-pre");
-			stackEl.dataset.dir = direction;
-
-			// Force reflow so the pre-position applies before transition.
 			incoming.offsetHeight;
-			incoming.classList.remove("no-transition");
 
 			startIndex = nextIndex;
-			applyClasses();
+			applyClasses(incoming);
+			incoming.offsetHeight;
+			incoming.classList.remove("no-transition");
 			setTimeout(function() {
 				locked = false;
 			}, 1200);

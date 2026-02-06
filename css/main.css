@@ -912,25 +912,31 @@ svg path {
   opacity: 1;
   transform: translateY(0);
   z-index: 3;
+  visibility: visible;
 }
 .testimonial.is-mid {
   opacity: 0.9;
   transform: translateY(var(--ts-step));
   z-index: 2;
+  visibility: visible;
 }
 .testimonial.is-bottom {
   opacity: 0.8;
   transform: translateY(calc(var(--ts-step) * 2));
   z-index: 1;
+  visibility: visible;
 }
 .testimonial.is-hidden {
   opacity: 0;
   transform: translateY(var(--ts-hidden));
   z-index: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 .testimonial.is-pre {
   opacity: 0;
+  visibility: visible;
 }
 
 .testimonial_stack[data-dir="down"] .testimonial.is-hidden {
