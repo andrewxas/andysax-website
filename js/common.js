@@ -132,11 +132,13 @@ $(document).ready(function() {
 				: (startIndex - 1 + items.length) % items.length;
 
 			const incoming = items[nextIndex];
-			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden");
+			incoming.classList.add("no-transition");
+			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre-top", "is-pre-bottom");
 			incoming.classList.add(direction === "down" ? "is-pre-top" : "is-pre-bottom");
 
 			// Force reflow so the pre-position applies before transition.
 			incoming.offsetHeight;
+			incoming.classList.remove("no-transition");
 
 			startIndex = nextIndex;
 			applyClasses();

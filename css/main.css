@@ -882,6 +882,10 @@ svg path {
   will-change: transform, opacity;
 }
 
+.testimonial.no-transition {
+  transition: none;
+}
+
 .testimonial p {
   font-style: italic;
   font-size: 16px;
