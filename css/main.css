@@ -338,6 +338,8 @@ svg path {
       font-weight: bold;
       font-size: 3.4em;
       background-color: rgba(0, 0, 0, 0.18);
+      text-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
+      box-shadow: 0 0 18px rgba(255, 255, 255, 0.18);
       margin-left: 20px;
       margin-right: 20px;
       -webkit-animation-delay: 0.5s;
