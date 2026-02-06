@@ -141,8 +141,8 @@ $(document).ready(function() {
 			if (locked) return;
 			locked = true;
 			const nextIndex = direction === "down"
-				? (startIndex + 1) % items.length
-				: (startIndex - 1 + items.length) % items.length;
+				? (startIndex - 1 + items.length) % items.length
+				: (startIndex + 1) % items.length;
 
 			const incoming = items[nextIndex];
 			stackEl.dataset.dir = direction;
