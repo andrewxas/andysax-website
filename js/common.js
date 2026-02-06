@@ -106,59 +106,93 @@ $(document).ready(function() {
 	if ($testimonialStack.length && $testimonials.length > 2) {
 		const stackEl = $testimonialStack[0];
 		const items = Array.from($testimonials);
+		const allClasses = [
+			"t-pos-top",
+			"t-pos-mid",
+			"t-pos-bottom",
+			"t-pos-above",
+			"t-pos-below",
+			"t-hidden",
+			"no-transition"
+		];
 		let startIndex = 0;
 		let locked = false;
 		let touchStartY = 0;
 		let touchEndY = 0;
 
-		function applyClasses(incomingEl) {
-			items.forEach(function(el, i) {
-				el.classList.remove("is-top", "is-mid", "is-bottom");
-				if (el !== incomingEl) el.classList.remove("is-pre");
-				el.classList.add("is-hidden", "no-transition");
-
-				const rel = (i - startIndex + items.length) % items.length;
-				if (rel === 0) el.classList.add("is-top");
-				else if (rel === 1) el.classList.add("is-mid");
-				else if (rel === 2) el.classList.add("is-bottom");
-			});
-
-			items.forEach(function(el) {
-				if (el.classList.contains("is-top") || el.classList.contains("is-mid") || el.classList.contains("is-bottom")) {
-					el.classList.remove("is-hidden", "no-transition");
-				}
-			});
-
-			if (incomingEl) {
-				incomingEl.classList.remove("is-hidden", "no-transition");
-				incomingEl.classList.add("is-pre");
-			}
+		function setPos(el, cls) {
+			el.classList.remove.apply(el.classList, allClasses);
+			el.classList.add(cls);
 		}
 
-		applyClasses();
+		function hide(el) {
+			setPos(el, "t-hidden");
+		}
+
+		function showInitial() {
+			items.forEach(hide);
+			const top = items[startIndex];
+			const mid = items[(startIndex + 1) % items.length];
+			const bottom = items[(startIndex + 2) % items.length];
+			setPos(top, "t-pos-top");
+			setPos(mid, "t-pos-mid");
+			setPos(bottom, "t-pos-bottom");
+		}
+
+		showInitial();
 
 		function rotate(direction) {
 			if (locked) return;
 			locked = true;
-			const nextIndex = direction === "down"
-				? (startIndex - 1 + items.length) % items.length
-				: (startIndex + 1) % items.length;
 
-			const incoming = items[nextIndex];
-			stackEl.dataset.dir = direction;
+			const topIdx = startIndex;
+			const midIdx = (startIndex + 1) % items.length;
+			const bottomIdx = (startIndex + 2) % items.length;
+
+			let incomingIdx;
+			if (direction === "down") {
+				incomingIdx = (startIndex - 1 + items.length) % items.length;
+			} else {
+				incomingIdx = (startIndex + 3) % items.length;
+			}
+
+			const top = items[topIdx];
+			const mid = items[midIdx];
+			const bottom = items[bottomIdx];
+			const incoming = items[incomingIdx];
+
+			// Hide everything except current three + incoming.
+			items.forEach(function(el) {
+				if (el !== top && el !== mid && el !== bottom && el !== incoming) hide(el);
+			});
 
 			incoming.classList.add("no-transition");
-			incoming.classList.remove("is-top", "is-mid", "is-bottom", "is-hidden", "is-pre");
-			incoming.classList.add("is-pre");
-			incoming.offsetHeight;
-
-			startIndex = nextIndex;
-			applyClasses(incoming);
+			setPos(incoming, direction === "down" ? "t-pos-above" : "t-pos-below");
 			incoming.offsetHeight;
 			incoming.classList.remove("no-transition");
+
+			requestAnimationFrame(function() {
+				if (direction === "down") {
+					setPos(incoming, "t-pos-top");
+					setPos(top, "t-pos-mid");
+					setPos(mid, "t-pos-bottom");
+					setPos(bottom, "t-pos-below");
+				} else {
+					setPos(incoming, "t-pos-bottom");
+					setPos(bottom, "t-pos-mid");
+					setPos(mid, "t-pos-top");
+					setPos(top, "t-pos-above");
+				}
+			});
+
 			setTimeout(function() {
+				if (direction === "down") hide(bottom);
+				else hide(top);
+				startIndex = direction === "down"
+					? incomingIdx
+					: (startIndex + 1) % items.length;
 				locked = false;
-			}, 1200);
+			}, 1100);
 		}
 
 		stackEl.addEventListener("wheel", function(e) {
