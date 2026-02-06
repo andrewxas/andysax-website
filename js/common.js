@@ -99,7 +99,7 @@ $(document).ready(function() {
 
 	$("input, select, textarea").jqBootstrapValidation();
 
-	$(".top_mnu ul a, .cta_btn").mPageScroll2id();
+	$(".top_mnu ul a, .cta_btn, .price_anchor").mPageScroll2id();
 
 	const $testimonialStack = $(".testimonial_stack");
 	const $testimonials = $testimonialStack.find(".testimonial");
